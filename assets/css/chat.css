@@ -28,8 +28,9 @@ body {
   padding: 0.5em 1em;
   /* background-color: var(--color1); */
   border: none;
-  color: #FFF;
+  
   margin-bottom: 1rem;
+  border: solid thin lightgray;
 }
 
 #results {
