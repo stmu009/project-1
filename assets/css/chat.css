@@ -10,6 +10,11 @@ body {
   font-family: 'HelveticaNeue-Light';
 }
 
+#chatbox{
+    
+  border: solid thin lightgray;
+}
+
 .msg {
   margin: 10px 0;
   padding: 10px;
@@ -18,7 +23,11 @@ body {
   /* #efefef; */
 }
 
-#username,
+#username {
+  margin: 5px 0px;
+  /* background-color: var(--color2); */
+}
+
 #text {
   margin: 5px 0px;
   /* background-color: var(--color2); */
@@ -27,19 +36,19 @@ body {
 #post {
   padding: 0.5em 1em;
   /* background-color: var(--color1); */
-  border: none;
-  
-  margin-bottom: 1rem;
   border: solid thin lightgray;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
 }
 
 #results {
   height: 20rem;
   overflow-y: scroll;
   /* background-color: var(--color3); */
+  border-bottom: solid thin lightgray;
 }
 
-.nav {
+.chat-header {
   /* background-color: var(--color5); */
   text-align: center;
 }
