@@ -1,72 +1,78 @@
 <!DOCTYPE html>
 
 <html>
+
 <head>
 	<title>Ultimate Trivia</title>
 </head>
 
 <!-- bootstrap link -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+<!-- Custom styles -->
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/chat.css">
+<script src='https://cdn.firebase.com/js/client/2.4.0/firebase.js'></script>
 
 <body>
 	<div class="jumbotron">
-	<h1>Ultimate Trivia-a-a-a-a(that's an echo)</h1>
+		<h1>Ultimate Trivia-a-a-a-a(that's an echo)</h1>
 		<h2>I mean it's just trivia, but we call it ultimate</h2>
-</div>
-
-<div class="container">
-	<div class="row card card-default">
-		<div class="card-header">instructions</div>
-		<div class="card-body">These are the instructions, follow them, do them. Ready set go...</div>
-	</div>
-	
-	<div class="row">
-
-		<div class="col-md-8">
-
-			<div class="row card card-default">
-				<div class="card-body" id="timer">Time Remaining: 00:00</div>
-			</div>
-
-			<div class="row card card-default" id="questionDiv">
-				<div class="card-header" id="questionDiv">question goes here</div>
-				<div class="card-body" id="answerChoiceDiv">A) answer choices<br>B) answer choice<br>C) answer choice<br>D) answer choice</div>
-			</div>
-		</div>
-
-		<div class="col-md-4">
-
-			<aside class="" id="chatbox">
-                <div class="nav">
-                    <input type="text" id="username" class="validate" placeholder="type your name here">
-                </div>
-                <div class="" id="results"></div>
-                <form action="">
-                    <div class="input-field col s12">
-                        <textarea id="text" class="" placeholder="type in a message and then click the submit button"></textarea>
-                    </div>
-                    <button id="post" class="btn waves-effect waves-light" type="submit" name="action">Submit
-                    </button>
-                </form>
-                <footer class="page-footer">
-                    <div class="footer-copyright">
-                        <div class="container">
-                            © 2018 Damian Ramirez
-                        </div>
-                    </div>
-                </footer>
-            </aside>
-
-		</div>
-
 	</div>
 
-	<div class="row card card-default">
-		<div class="card-header">Current Game Scores</div>
-		<div class="card-body"></div>
+	<div class="container">
+		<div class="row card card-default">
+			<div class="card-header">instructions</div>
+			<div class="card-body">These are the instructions, follow them, do them. Ready set go...</div>
+		</div>
 
-</div>
+		<div class="row">
 
+			<div class="col-md-8">
+
+				<div class="row card card-default">
+					<div class="card-body" id="timer">Time Remaining: 00:00</div>
+				</div>
+
+				<div class="row card card-default" id="questionDiv">
+					<div class="card-header" id="questionDiv">question goes here</div>
+					<div class="card-body" id="answerChoiceDiv">A) answer choices
+						<br>B) answer choice
+						<br>C) answer choice
+						<br>D) answer choice</div>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+
+				<aside class="" id="chatbox">
+					<div class="nav">
+						<input type="text" id="username" class="validate" placeholder="type your name here">
+					</div>
+					<div class="" id="results"></div>
+					<form action="">
+						<div class="input-field col s12">
+							<textarea id="text" class="" placeholder="type in a message and then click the submit button"></textarea>
+						</div>
+						<button id="post" class="btn waves-effect waves-light" type="submit" name="action">Submit
+						</button>
+					</form>
+					<footer class="page-footer">
+					</footer>
+				</aside>
+
+			</div>
+
+		</div>
+
+		<div class="row card card-default">
+			<div class="card-header">Current Game Scores</div>
+			<div class="card-body"></div>
+
+		</div>
+		<!-- Local JS Files -->
+		<script src="assets/js/database.js"></script>
+		<script src="assets/js/chat.js"></script>
 
 </body>
 
