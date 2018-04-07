@@ -15,7 +15,7 @@ var countdown = {
     
     // Change the "display" div to "00:30."
 
-    $("#display").text("00:30");
+    $("#timer").text("00:30");
     
   },
   start: function() {
@@ -47,7 +47,7 @@ var countdown = {
     }
 
     // Use the variable we just created to show the converted time in the "display" div.
-    $("#display").text(converted);
+    $("#timer").text(converted);
   },
 
   
