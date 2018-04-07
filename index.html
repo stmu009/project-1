@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ultimate Trivia</title>
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/chat.css">
+    <script src='https://cdn.firebase.com/js/client/2.4.0/firebase.js'></script>
+</head>
+
+<body>
+    <aside class="" id="chatbox">
+        <div class="nav">
+            <input type="text" id="username" class="validate" placeholder="type your name here">
+        </div>
+        <div class="" id="results"></div>
+        <form action="">
+            <div class="input-field col s12">
+                <textarea id="text" class="" placeholder="type in a message and then click the submit button"></textarea>
+            </div>
+            <button id="post" class="btn waves-effect waves-light" type="submit" name="action">Submit
+            </button>
+        </form>
+        <footer class="page-footer">
+            <div class="footer-copyright">
+                <div class="container">
+                    © 2018 Damian Ramirez
+                </div>
+            </div>
+        </footer>
+    </aside>
+    <!-- Local JS Files -->
+    <script src="assets/js/database.js"></script>
+    <script src="assets/js/chat.js"></script>
+</body>
+
+</html>

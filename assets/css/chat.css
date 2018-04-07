@@ -1,0 +1,51 @@
+:root {
+  --color1: rgba(204, 41, 54, 1);
+  --color2: rgba(230, 194, 41, 1);
+  --color3: rgba(241, 113, 5, 1);
+  --color4: rgba(102, 16, 242, 1);
+  --color5: rgba(26, 143, 227, 1);
+}
+
+body {
+  font-family: 'HelveticaNeue-Light';
+}
+
+.msg {
+  margin: 10px 0;
+  padding: 10px;
+  width: 400px;
+  background-color: var(--color2);
+  /* #efefef; */
+}
+
+#username,
+#text {
+  margin: 5px 0px;
+  /* background-color: var(--color2); */
+}
+
+#post {
+  padding: 0.5em 1em;
+  background-color: var(--color1);
+  border: none;
+  color: #FFF;
+  margin-bottom: 1rem;
+}
+
+#results {
+  height: 20rem;
+  overflow-y: scroll;
+  background-color: var(--color3);
+}
+
+.nav {
+  background-color: var(--color5);
+}
+
+.page-footer {
+  background-color: var(--color5);
+}
+
+.footer-copyright {
+  background-color: var(--color5) !important;
+}
