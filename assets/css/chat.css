@@ -14,7 +14,7 @@ body {
   margin: 10px 0;
   padding: 10px;
   width: 400px;
-  background-color: var(--color2);
+  /* background-color: var(--color2); */
   /* #efefef; */
 }
 
@@ -26,7 +26,7 @@ body {
 
 #post {
   padding: 0.5em 1em;
-  background-color: var(--color1);
+  /* background-color: var(--color1); */
   border: none;
   color: #FFF;
   margin-bottom: 1rem;
@@ -35,18 +35,18 @@ body {
 #results {
   height: 20rem;
   overflow-y: scroll;
-  background-color: var(--color3);
+  /* background-color: var(--color3); */
 }
 
 .nav {
-  background-color: var(--color5);
+  /* background-color: var(--color5); */
   text-align: center;
 }
 
 .page-footer {
-  background-color: var(--color5);
+  /* background-color: var(--color5); */
 }
 
 .footer-copyright {
-  background-color: var(--color5) !important;
+  /* background-color: var(--color5) !important; */
 }
