@@ -26,6 +26,43 @@
 			<div class="card-body">These are the instructions, follow them, do them. Ready set go...</div>
 		</div>
 
+		<!-- Button trigger modal -->
+		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">
+			Launch
+		</button>
+
+		<!-- Modal -->
+		<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="modelTitleId">Ultimate Trivia Game</h4>
+					</div>
+					<div class="modal-body">
+						<h4>Rules:</h4>
+						You have <span id="question-timer">30</span> seconds to answer each question.
+						<br> The category will change after <span id="quesitons-in-category">5</span> questions.
+						<br> Your score is a running count of how many questions you have answered correcly in a session.
+						<br>
+					</div>
+					<input type="text" id="username" class="validate" placeholder="type your name here">
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary">START</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			$('#exampleModal').on('show.bs.modal', event => {
+				var button = $(event.relatedTarget);
+				var modal = $(this);
+				// Use above variables to manipulate the DOM
+
+			});
+		</script>
+
 		<div class="row">
 
 			<div class="col-md-8">
@@ -68,9 +105,23 @@
 
 		<div class="row card card-default">
 			<div class="card-header">Current Game Scores</div>
-			<div class="card-body"><marquee behavior="scroll" direction="left"><span>superman: 15000 pts; </span><span>Yo Man: 9456 pts; </span><span>Bar Rat: 65.333333333333 pts; </span></marquee></div>
+			<div class="card-body">
+				<marquee behavior="scroll" direction="left">
+					<span>superman: 15000 pts; </span>
+					<span>Yo Man: 9456 pts; </span>
+					<span>Bar Rat: 65.333333333333 pts; </span>
+				</marquee>
+			</div>
 
 		</div>
+		<!-- Bootstrap Includes for Animations  -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		    crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		    crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		    crossorigin="anonymous"></script>
+
 		<!-- Local JS Files -->
 		<script src="assets/js/database.js"></script>
 		<script src="assets/js/chat.js"></script>

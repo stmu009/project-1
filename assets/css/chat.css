@@ -26,6 +26,7 @@ body {
 #username {
   margin: 5px 0px;
   /* background-color: var(--color2); */
+  width:  80%;
 }
 
 #text {
