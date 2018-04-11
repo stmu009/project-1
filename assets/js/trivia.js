@@ -1,4 +1,5 @@
 questions = [{}];
+
 //create a list of categories
 categories = [{
         id: 12,
@@ -27,6 +28,8 @@ categories = [{
     }
 
 ]
+
+roundScore = 0;
 
 var amount = 5;
 var category = 15;
@@ -60,12 +63,25 @@ function getQuestions() {
             questions = response.results;
 
             console.log("questions", questions)
-            //show the questions based on random category from list of categories
-            addQuestion();
-            //show the choices
-            addChoices();
+            
+            setQuestion();
+            
+            $('#submit-choice').click(function (e) { 
+                e.preventDefault();
+                checkChoice();
+            });
+            
         }
     })
+}
+
+function setQuestion(){
+    //show the questions based on random category from list of categories
+    addQuestion();
+    //show the choices
+    addChoices();
+    //check choice
+    
 }
 
 function addQuestion() {
@@ -86,16 +102,35 @@ function addChoices() {
     });
 }
 
+function checkChoice(){
+    var userInput = $(":checked")[0].labels[0].innerText;
+    console.log("checked:", userInput);
+    console.log("correct answer", questions[0].correct_answer)
+    //determine if correct 
+    //out of time
+    if (userInput === questions[0].correct_answer)
+    {
+        roundScore++;
+        console.log("Correct Answer")
+        //next question if not the end
+        questions.splice(0,1)
+        console.log("questions after slice", questions)
+        setQuestion();
+    }
+    else
+    {
+        console.log("Not correct Answer")
+        //next question if not the end
+        questions.splice(0,1)
+        console.log("questions after slice", questions)
+        setQuestion();
+    }
+}
+
 getQuestions();
 
-
-
-
-
-//determine if correct or out of time
-//show if correct
-
-//next question
+//modal to tell if correct, 3 second timer to next question
+//add gifs
 
 //end of round
 
