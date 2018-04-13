@@ -1,9 +1,11 @@
+//get the name
 var usernameInput = document.querySelector("#username");
 var textInput = document.querySelector("#text");
 var postButton = document.querySelector("#post");
 
 postButton.addEventListener("click", function (e) {
   e.preventDefault();
+  //hook up name to database
   var msgUser = usernameInput.value;
   var msgText = textInput.value;
   myFirebase.push({

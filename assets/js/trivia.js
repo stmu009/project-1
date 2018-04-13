@@ -65,23 +65,23 @@ function getQuestions() {
             console.log("questions", questions)
             
             setQuestion();
-            
-            $('#submit-choice').click(function (e) { 
-                e.preventDefault();
-                checkChoice();
-            });
-            
+
+
+
         }
     })
 }
 
-function setQuestion(){
+function setQuestion() {
     //show the questions based on random category from list of categories
     addQuestion();
     //show the choices
     addChoices();
     //check choice
-    
+    // $('#submit-choice').addClass('btn-primary');
+    // $('#submit-choice').removeClass('btn-success');
+    // $('#submit-choice').removeClass('btn-danger');
+    // $('#submit-choice').removeClass('btn-warning');
 }
 
 function addQuestion() {
@@ -102,38 +102,98 @@ function addChoices() {
     });
 }
 
-function checkChoice(){
+function checkChoice() {
     var userInput = $(":checked")[0].labels[0].innerText;
     console.log("checked:", userInput);
     console.log("correct answer", questions[0].correct_answer)
     //determine if correct 
     //out of time
-    if (userInput === questions[0].correct_answer)
-    {
+    if (userInput === questions[0].correct_answer) {
         roundScore++;
         console.log("Correct Answer")
+        showCorrect();
         //next question if not the end
-        questions.splice(0,1)
-        console.log("questions after slice", questions)
-        setQuestion();
-    }
-    else
-    {
+        questions.splice(0, 1)
+        //if out of questions then round results
+        if (questions.length === 0) {
+            //set a new category setCategory()
+            setCategory();
+            console.warn("category:", randomCategory.categoryName)
+            $('#results-modal').modal('show');
+        } else {
+            console.log("questions after slice", questions)
+            setQuestion();
+            //restart the counter
+            countdown.reset();
+            countdown.start();
+        }
+    } else {
         console.log("Not correct Answer")
+        showIncorrect()
         //next question if not the end
-        questions.splice(0,1)
-        console.log("questions after slice", questions)
-        setQuestion();
+        questions.splice(0, 1)
+        if (questions.length === 0) {
+            //set a new category setCategory()
+            setCategory();
+            console.warn("category:", randomCategory.categoryName)
+            $('#results-modal').modal('show');
+        } else {
+            console.log("questions after slice", questions)
+            setQuestion();
+            //restart the counter
+            countdown.reset();
+            countdown.start();
+        }
     }
 }
 
+//change button color to tell if correct, incorrect, or out time
+function showCorrect() {
+    $('#submit-choice').text('Correct!');
+    $('#submit-choice').removeClass('btn-primary');
+    $('#submit-choice').addClass('btn-success');
+    
+}
+function showIncorrect(){
+    $('#submit-choice').text('Wrong!');
+    $('#submit-choice').removeClass('btn-primary');
+    $('#submit-choice').addClass('btn-danger');
+}
+function showOutOfTime(){
+    $('#submit-choice').text('Out of time!');
+    $('#submit-choice').removeClass('btn-primary');
+    $('#submit-choice').addClass('btn-warning');
+
+}
+
+$('body').on('click', '#submit-choice', function (e) {
+    e.preventDefault();
+    countdown.reset();
+    checkChoice();
+});
+//show modal to start the game
+$(window).on('load', function () {
+    $('#modelId').modal('show');
+});
+
 getQuestions();
 
-//modal to tell if correct, 3 second timer to next question
+$('#launch-button').click(function (e) {
+    e.preventDefault();
+    countdown.start();
+});
+
+$('#results-button').click(function (e) {
+    e.preventDefault();
+
+    //////get new questions getQuestions()
+    getQuestions();
+    ////// setQuestion()
+    setQuestion();
+    countdown.start();
+});
+
+//transition button back to submit
+//out of time logic
 //add gifs
 
-//end of round
-
-//start next round with new category
-
-//*allow them to change their mind. radio buttons
