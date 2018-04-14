@@ -7,16 +7,16 @@ var clockRunning = false;
 // countdown object object
 var countdown = {
 
-  time: 5,
+  time: 20,
 
   reset: function() {
 
-    countdown.time = 5;
+    countdown.time = 20;
     
     
     // Change the "display" div to "00:30."
 
-    $("#timer").text("00:30");
+    $("#timer").text("00:20");
     
   },
   start: function() {
@@ -39,7 +39,6 @@ var countdown = {
 
     // decrement time by 1.
     countdown.time--;
-    console.log("this is the countdown time: ", countdown.time);
     if (countdown.time === 0) {
       showOutOfTime();
       questions.splice(0, 1);

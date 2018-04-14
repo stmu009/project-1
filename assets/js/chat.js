@@ -8,7 +8,7 @@ postButton.addEventListener("click", function (e) {
   //hook up name to database
   var msgUser = usernameInput.value;
   var msgText = textInput.value;
-  myFirebase.push({
+  myFirebaseMessages.push({
     username: msgUser,
     text: msgText
   });
@@ -17,7 +17,7 @@ postButton.addEventListener("click", function (e) {
 
 /** Function to add a data listener **/
 var startListening = function () {
-  myFirebase.on("child_added", function (snapshot) {
+  myFirebaseMessages.on("child_added", function (snapshot) {
     var msg = snapshot.val();
 
     var msgUsernameElement = document.createElement("b");

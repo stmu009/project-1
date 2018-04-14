@@ -126,6 +126,8 @@ function checkChoice() {
     
     if (userInput === questions[0].correct_answer) {
         roundScore++;
+        newUser.score = roundScore;
+        myFirebase.ref().push(newUser)
         console.log("Correct Answer")
         showCorrect();
         //next question if not the end
@@ -179,9 +181,17 @@ $(window).on('load', function () {
 
 getQuestions();
 
+newUser = {
+    username: usernameInput.value,
+    score: roundScore
+}
+
 $('#launch-button').click(function (e) {
     e.preventDefault();
     countdown.start();
+    
+    newUser.username = usernameInput.value
+    myFirebase.ref().push(newUser)
 });
 
 $('#results-button').click(function (e) {
@@ -193,6 +203,42 @@ $('#results-button').click(function (e) {
     setQuestion();
     countdown.start();
 });
+
+var startListeningScores = function () {
+    myFirebase.on("value", function (snapshot) {
+      var userObject = snapshot.val();
+    var marquee = $('<marquee beahviour="scroll" direction="left"></marquee>')
+    console.log('marquee', marquee);
+      for (const key in userObject) {
+          if (userObject.hasOwnProperty(key)) {
+              const element = userObject[key];
+              var span = $('<span>')
+              span.text(`${element.username}: ${element.score}pts;   `)
+              $(marquee).append(span);              
+          }
+      }
+      $('#mq-section').html(marquee)
+    //   console.log("childSnapshot", childSnapshot);
+  
+    //   var msgUsernameElement = document.createElement("b");
+    //   msgUsernameElement.textContent = msg.username;
+  
+    //   var msgTextElement = document.createElement("p");
+    //   msgTextElement.textContent = msg.text;
+    //   msgTextElement.className = "mb-1";
+  
+    //   var msgElement = document.createElement("div");
+    //   msgElement.appendChild(msgUsernameElement);
+    //   msgElement.appendChild(msgTextElement);
+  
+    //   msgElement.className = "msg list-group-item align-items-start";
+    //   var results = document.getElementById("results");
+    //   results.insertBefore(msgElement, results.firstChild);
+    });
+  };
+  
+  // Begin listening for data
+  startListeningScores();
 
 //transition button back to submit
 //out of time logic
