@@ -7,11 +7,12 @@ var clockRunning = false;
 // countdown object object
 var countdown = {
 
-  time: 30,
+  time: 5,
 
   reset: function() {
 
-    countdown.time = 30;
+    countdown.time = 5;
+    
     
     // Change the "display" div to "00:30."
 
@@ -38,6 +39,12 @@ var countdown = {
 
     // decrement time by 1.
     countdown.time--;
+    console.log("this is the countdown time: ", countdown.time);
+    if (countdown.time === 0) {
+      showOutOfTime();
+      questions.splice(0, 1);
+      setTimeout(nextQuestion, 2000);
+    }
 
     // Get the current time, pass that into the countdown.timeConverter function, and save the result in a variable.
     var converted = countdown.timeConverter(countdown.time);

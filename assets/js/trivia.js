@@ -101,14 +101,7 @@ function addChoices() {
         $("#choice" + index).html(value);
     });
 }
-
-function checkChoice() {
-    var userInput = $(":checked")[0].labels[0].innerText;
-    console.log("checked:", userInput);
-    console.log("correct answer", questions[0].correct_answer)
-    //determine if correct 
-    //out of time
-    function nextQuestion() {
+function nextQuestion() {
         showSubmit();
         if (questions.length === 0) {
             //set a new category setCategory()
@@ -123,6 +116,14 @@ function checkChoice() {
             countdown.start();
         }
     }
+
+function checkChoice() {
+    var userInput = $(":checked")[0].labels[0].innerText;
+    console.log("checked:", userInput);
+    console.log("correct answer", questions[0].correct_answer)
+    //determine if correct 
+    //out of time
+    
     if (userInput === questions[0].correct_answer) {
         roundScore++;
         console.log("Correct Answer")
