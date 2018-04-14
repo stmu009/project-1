@@ -108,6 +108,21 @@ function checkChoice() {
     console.log("correct answer", questions[0].correct_answer)
     //determine if correct 
     //out of time
+    function nextQuestion() {
+        showSubmit();
+        if (questions.length === 0) {
+            //set a new category setCategory()
+            setCategory();
+            console.warn("category:", randomCategory.categoryName)
+            $('#results-modal').modal('show');
+        } else {
+            console.log("questions after slice", questions)
+            setQuestion();
+            //restart the counter
+            countdown.reset();
+            countdown.start();
+        }
+    }
     if (userInput === questions[0].correct_answer) {
         roundScore++;
         console.log("Correct Answer")
@@ -115,35 +130,14 @@ function checkChoice() {
         //next question if not the end
         questions.splice(0, 1)
         //if out of questions then round results
-        if (questions.length === 0) {
-            //set a new category setCategory()
-            setCategory();
-            console.warn("category:", randomCategory.categoryName)
-            $('#results-modal').modal('show');
-        } else {
-            console.log("questions after slice", questions)
-            setQuestion();
-            //restart the counter
-            countdown.reset();
-            countdown.start();
-        }
+        setTimeout(nextQuestion, 2000);
+        
     } else {
         console.log("Not correct Answer")
         showIncorrect()
         //next question if not the end
         questions.splice(0, 1)
-        if (questions.length === 0) {
-            //set a new category setCategory()
-            setCategory();
-            console.warn("category:", randomCategory.categoryName)
-            $('#results-modal').modal('show');
-        } else {
-            console.log("questions after slice", questions)
-            setQuestion();
-            //restart the counter
-            countdown.reset();
-            countdown.start();
-        }
+        setTimeout(nextQuestion, 2000);
     }
 }
 
@@ -163,6 +157,12 @@ function showOutOfTime(){
     $('#submit-choice').text('Out of time!');
     $('#submit-choice').removeClass('btn-primary');
     $('#submit-choice').addClass('btn-warning');
+
+}
+function showSubmit(){
+    $('#submit-choice').text('Submit');
+    $('#submit-choice').removeClass('btn-danger btn-warning btn-success');
+    $('#submit-choice').addClass('btn-primary');
 
 }
 
