@@ -1,5 +1,8 @@
 questions = [{}];
 
+testRef=myFirebase.ref().push()
+console.log('user key', testRef.key);
+
 //create a list of categories
 categories = [{
         id: 12,
@@ -36,9 +39,9 @@ var category = 15;
 var difficulty = 'easy';
 
 function setCategory() {
-    console.log(categories);
+    // console.log(categories);
     randomCategory = categories[Math.floor(Math.random() * categories.length)]
-    console.log("randomCategory:", randomCategory)
+    // console.log("randomCategory:", randomCategory)
     category = randomCategory.id;
     difficulty = randomCategory.difficulty;
 
@@ -61,13 +64,8 @@ function getQuestions() {
         url: url,
         success: function (response) {
             questions = response.results;
-
-            console.log("questions", questions)
-            
+            // console.log("questions", questions)
             setQuestion();
-
-
-
         }
     })
 }
@@ -93,11 +91,11 @@ function addChoices() {
     choices = [...questions[0].incorrect_answers];
     choices.push(questions[0].correct_answer);
     choices.sort(() => Math.random() - 0.5);
-    console.log("chocies", choices)
+    // console.log("chocies", choices)
     $.each(choices, (index, value) => {
-        console.log("index:", index)
-        console.log("value:", value)
-        console.log("choice0:", $("#choice0"))
+        // console.log("index:", index)
+        // console.log("value:", value)
+        // console.log("choice0:", $("#choice0"))
         $("#choice" + index).html(value);
     });
 }
@@ -106,10 +104,10 @@ function nextQuestion() {
         if (questions.length === 0) {
             //set a new category setCategory()
             setCategory();
-            console.warn("category:", randomCategory.categoryName)
+            // console.warn("category:", randomCategory.categoryName)
             $('#results-modal').modal('show');
         } else {
-            console.log("questions after slice", questions)
+            // console.log("questions after slice", questions)
             setQuestion();
             //restart the counter
             countdown.reset();
@@ -119,16 +117,16 @@ function nextQuestion() {
 
 function checkChoice() {
     var userInput = $(":checked")[0].labels[0].innerText;
-    console.log("checked:", userInput);
-    console.log("correct answer", questions[0].correct_answer)
+    // console.log("checked:", userInput);
+    // console.log("correct answer", questions[0].correct_answer)
     //determine if correct 
     //out of time
     
     if (userInput === questions[0].correct_answer) {
         roundScore++;
         newUser.score = roundScore;
-        myFirebase.ref().push(newUser)
-        console.log("Correct Answer")
+        testRef.update(newUser)
+        // console.log("Correct Answer")
         showCorrect();
         //next question if not the end
         questions.splice(0, 1)
@@ -136,7 +134,7 @@ function checkChoice() {
         setTimeout(nextQuestion, 2000);
         
     } else {
-        console.log("Not correct Answer")
+        // console.log("Not correct Answer")
         showIncorrect()
         //next question if not the end
         questions.splice(0, 1)
@@ -191,7 +189,7 @@ $('#launch-button').click(function (e) {
     countdown.start();
     
     newUser.username = usernameInput.value
-    myFirebase.ref().push(newUser)
+    testRef.update(newUser)
 });
 
 $('#results-button').click(function (e) {
