@@ -129,7 +129,7 @@ function nextQuestion() {
             }
         });
         // console.warn("category:", randomCategory.categoryName)
-        $('#results-modal').modal('show');
+        $('#results-modal').modal({backdrop: 'static', keyboard: false});
     } else {
         // console.log("questions after slice", questions)
         setQuestion();
