@@ -116,7 +116,7 @@ function nextQuestion() {
         //set a new category setCategory()
         setCategory();
         $('#next-category').text(globalCategory)
-        var queryURL = "https:api.giphy.com/v1/gifs/random?tag=" + globalCategory + "&api_key=Wmowk73oEjiCgiZeGWDSiSZ3sxUZP282";
+        var queryURL = "https://api.giphy.com/v1/gifs/random?tag=" + globalCategory + "&api_key=Wmowk73oEjiCgiZeGWDSiSZ3sxUZP282";
         var imageURL =''
         $.ajax({
             type: "GET",
