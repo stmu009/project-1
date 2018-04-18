@@ -1,4 +1,4 @@
-$('#modelId').modal('show');
+$('#modelId').modal({backdrop: 'static', keyboard: false});
 
 questions = [{}];
 
@@ -51,6 +51,7 @@ function setCategory() {
     category = randomCategory.id;
     difficulty = randomCategory.difficulty;
     globalCategory = randomCategory.categoryName
+    $('#category-name').text(globalCategory);
 
 };
 
@@ -190,6 +191,7 @@ function showSubmit() {
     $('#submit-choice').text('Submit');
     $('#submit-choice').removeClass('btn-danger btn-warning btn-success');
     $('#submit-choice').addClass('btn-primary');
+    $("#submit-choice").removeAttr("disabled");
 
 }
 
@@ -197,6 +199,7 @@ $('body').on('click', '#submit-choice', function (e) {
     e.preventDefault();
     countdown.reset();
     checkChoice();
+    $("#submit-choice").attr("disabled", "disabled");
 });
 //show modal to start the game
 $(window).on('load', function () {
@@ -254,4 +257,3 @@ var startListeningScores = function () {
 // Begin listening for data
 startListeningScores();
 
-//add gifs

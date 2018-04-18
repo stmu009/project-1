@@ -1,0 +1,41 @@
+body {
+    background-image: url(https://source.unsplash.com/random/1600X900);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: block;
+}
+
+button#submit-choice {
+    margin-top: 2rem;
+}
+
+div#answerChoiceDiv {
+    font-size: 1.5rem;
+}
+
+div#question-div {
+    font-size: 1.5rem;
+}
+
+div#questionDiv {
+    height: 100%;
+}
+
+#category-name{
+    text-transform: uppercase;
+}
+.jumbotron{
+    text-align: center;
+}
+
+#soundcloud-section{
+    
+    bottom: 0;
+    width: 100%;
+
+}
