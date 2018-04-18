@@ -21,12 +21,11 @@
 		<h1>Ultimate Trivia-a-a-a-a(that's an echo)</h1>
 		<h2>I mean it's just trivia, but we call it ultimate</h2>
 	</div>
-
 	<div class="container">
-		<div class="row card card-default">
-			<div class="card-header">instructions</div>
-			<div class="card-body">These are the instructions, follow them, do them. Ready set go...</div>
+		<div id="soundcloud-section" class="row card card-default">
+			
 		</div>
+	<div class="container">
 
 		<!-- Modal -->
 		<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
@@ -102,8 +101,15 @@
 							<h4 class="modal-title" id="modelTitleId">Round Results</h4>
 						</div>
 						<div class="modal-body">
-								<p><span id="correct-answers">#</span> out of 5</p>
+								<!-- <p><span id="correct-answers">#</span> out of 5</p> -->
 								<p>Total score: <span id="total-score">###</span></p>
+								<div class="card">
+									<div class="card-body">
+										<h4 class="card-title">The Next Category is: <span id="next-category"></span></h4>
+										<img id="category-image" class="card-img-top" src="" alt="">
+										<p class="card-text"></p>
+									</div>
+								</div>
 						</div>
 	
 						<div class="modal-footer">

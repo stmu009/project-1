@@ -1,7 +1,13 @@
+$('#modelId').modal('show');
+
 questions = [{}];
 
-testRef=myFirebase.ref().push()
+testRef = myFirebase.ref().push()
 console.log('user key', testRef.key);
+
+globalCategory = ''
+
+
 
 //create a list of categories
 categories = [{
@@ -44,13 +50,13 @@ function setCategory() {
     // console.log("randomCategory:", randomCategory)
     category = randomCategory.id;
     difficulty = randomCategory.difficulty;
+    globalCategory = randomCategory.categoryName
 
 };
 
 
 //connect to api and get results
 function getQuestions() {
-    setCategory();
     var difficultString = "&difficulty=" + difficulty;
     if (difficulty === 'any') {
         difficultString = ''
@@ -99,21 +105,38 @@ function addChoices() {
         $("#choice" + index).html(value);
     });
 }
+
 function nextQuestion() {
-        showSubmit();
-        if (questions.length === 0) {
-            //set a new category setCategory()
-            setCategory();
-            // console.warn("category:", randomCategory.categoryName)
-            $('#results-modal').modal('show');
-        } else {
-            // console.log("questions after slice", questions)
-            setQuestion();
-            //restart the counter
-            countdown.reset();
-            countdown.start();
-        }
+    showSubmit();
+    if (questions.length === 0) {
+        countdown.stop();
+        //update score for next round
+        $('#total-score').text(roundScore)
+        //set a new category setCategory()
+        setCategory();
+        $('#next-category').text(globalCategory)
+        var queryURL = "https:api.giphy.com/v1/gifs/random?tag=" + globalCategory + "&api_key=Wmowk73oEjiCgiZeGWDSiSZ3sxUZP282";
+        var imageURL =''
+        $.ajax({
+            type: "GET",
+            method: "GET",
+            url: queryURL,
+            success: function (response) {
+                console.log( "image url:",response.data.images.fixed_height.url)
+                imageURL = response.data.images.fixed_height.url;
+                $('#category-image').attr('src', imageURL);
+            }
+        });
+        // console.warn("category:", randomCategory.categoryName)
+        $('#results-modal').modal('show');
+    } else {
+        // console.log("questions after slice", questions)
+        setQuestion();
+        //restart the counter
+        countdown.reset();
+        countdown.start();
     }
+}
 
 function checkChoice() {
     var userInput = $(":checked")[0].labels[0].innerText;
@@ -121,7 +144,7 @@ function checkChoice() {
     // console.log("correct answer", questions[0].correct_answer)
     //determine if correct 
     //out of time
-    
+
     if (userInput === questions[0].correct_answer) {
         roundScore++;
         newUser.score = roundScore;
@@ -132,7 +155,7 @@ function checkChoice() {
         questions.splice(0, 1)
         //if out of questions then round results
         setTimeout(nextQuestion, 2000);
-        
+
     } else {
         // console.log("Not correct Answer")
         showIncorrect()
@@ -147,20 +170,23 @@ function showCorrect() {
     $('#submit-choice').text('Correct!');
     $('#submit-choice').removeClass('btn-primary');
     $('#submit-choice').addClass('btn-success');
-    
+
 }
-function showIncorrect(){
+
+function showIncorrect() {
     $('#submit-choice').text('Wrong!');
     $('#submit-choice').removeClass('btn-primary');
     $('#submit-choice').addClass('btn-danger');
 }
-function showOutOfTime(){
+
+function showOutOfTime() {
     $('#submit-choice').text('Out of time!');
     $('#submit-choice').removeClass('btn-primary');
     $('#submit-choice').addClass('btn-warning');
 
 }
-function showSubmit(){
+
+function showSubmit() {
     $('#submit-choice').text('Submit');
     $('#submit-choice').removeClass('btn-danger btn-warning btn-success');
     $('#submit-choice').addClass('btn-primary');
@@ -174,9 +200,13 @@ $('body').on('click', '#submit-choice', function (e) {
 });
 //show modal to start the game
 $(window).on('load', function () {
-    $('#modelId').modal('show');
+
+    var f = document.createElement('div');
+    $(f).html('<iframe width="100%" height="260" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/74776996&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>')
+    $('#soundcloud-section').append(f);
 });
 
+setCategory();
 getQuestions();
 
 newUser = {
@@ -187,40 +217,41 @@ newUser = {
 $('#launch-button').click(function (e) {
     e.preventDefault();
     countdown.start();
-    
+
     newUser.username = usernameInput.value
     testRef.update(newUser)
 });
 
 $('#results-button').click(function (e) {
     e.preventDefault();
-
+    countdown.reset();
     //////get new questions getQuestions()
     getQuestions();
     ////// setQuestion()
-    setQuestion();
+    // setQuestion();
+    console.log('before start');
     countdown.start();
+    console.log('after start');
 });
 
 var startListeningScores = function () {
     myFirebase.on("value", function (snapshot) {
-      var userObject = snapshot.val();
-    var marquee = $('<marquee beahviour="scroll" direction="left"></marquee>')
-    console.log('marquee', marquee);
-      for (const key in userObject) {
-          if (userObject.hasOwnProperty(key)) {
-              const element = userObject[key];
-              var span = $('<span>')
-              span.text(`${element.username}: ${element.score}pts;   `)
-              $(marquee).append(span);              
-          }
-      }
-      $('#mq-section').html(marquee)
+        var userObject = snapshot.val();
+        var marquee = $('<marquee beahviour="scroll" direction="left"></marquee>')
+        console.log('marquee', marquee);
+        for (const key in userObject) {
+            if (userObject.hasOwnProperty(key)) {
+                const element = userObject[key];
+                var span = $('<span>')
+                span.text(`${element.username}: ${element.score}pts;   `)
+                $(marquee).append(span);
+            }
+        }
+        $('#mq-section').html(marquee)
     });
-  };
-  
-  // Begin listening for data
-  startListeningScores();
+};
+
+// Begin listening for data
+startListeningScores();
 
 //add gifs
-
