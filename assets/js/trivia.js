@@ -220,7 +220,7 @@ newUser = {
 $('#launch-button').click(function (e) {
     e.preventDefault();
     countdown.start();
-
+    
     newUser.username = usernameInput.value
     testRef.update(newUser)
 });

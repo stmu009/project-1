@@ -122,7 +122,21 @@
 									</div>
 								</div>
 						</div>
-	
+						<aside style="width: 90% !important; margin: 0 auto;" class="row card card-default" id="chatbox-in-results">
+							<div class="card-header" id="chat-header-in-results">
+							</div>
+							<div id="messages-in-results" class="list-group">
+							</div>
+							<form action="">
+								<div class="input-field col s12">
+									<textarea id="text-in-results" class="" placeholder="type in a message and then click the submit button"></textarea>
+								</div>
+								<button id="post-in-results" class="btn" type="submit" name="action">Submit
+								</button>
+							</form>
+							<footer class="page-footer">
+							</footer>
+						</aside>
 						<div class="modal-footer">
 							<!-- Button trigger modal -->
 							<button id="results-button" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#results-modal">
@@ -140,7 +154,7 @@
 					<div class="card-header" id="chat-header">Chat with Friends!
 						<!-- <input type="text" id="username" class="validate" placeholder="type your name here"> -->
 					</div>
-					<div id="results" class="list-group">
+					<div id="messages" class="list-group">
 					</div>
 					<form action="">
 						<div class="input-field col-md-12">
