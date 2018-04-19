@@ -14,13 +14,26 @@ body {
     
   border: solid thin lightgray;
 }
+#chatbox-in-results{
+    
+  border: solid thin lightgray;
+}
 
 .msg {
   margin: 10px 0;
   padding: 10px;
-  width: 400px;
+  /* width: 400px; */
   /* background-color: var(--color2); */
   /* #efefef; */
+}
+div#messages {
+  height: 400px;
+  overflow: scroll;
+}
+div#messages-in-results {
+  height: 150px;
+  overflow: scroll;
+  border-bottom: solid thin lightgray;
 }
 
 #username {
@@ -35,6 +48,13 @@ body {
 }
 
 #post {
+  padding: 0.5em 1em;
+  /* background-color: var(--color1); */
+  border: solid thin lightgray;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+}
+#post-in-results {
   padding: 0.5em 1em;
   /* background-color: var(--color1); */
   border: solid thin lightgray;
