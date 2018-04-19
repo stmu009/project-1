@@ -8,6 +8,7 @@ body {
     justify-content: center;
     align-items: center;
     display: block;
+
 }
 
 button#submit-choice {
@@ -26,16 +27,79 @@ div#questionDiv {
     height: 100%;
 }
 
+.card{
+    border: solid 3px black;
+}
+
 #category-name{
     text-transform: uppercase;
+    font-size: 2rem;
+
+}
+.container{
+    font-family: Special Elite;
 }
 .jumbotron{
     text-align: center;
+    font-family: Audiowide;
+    background-color: orange;
+    border-bottom: solid 5px lightgrey;
 }
 
 #soundcloud-section{
     
     bottom: 0;
     width: 100%;
+    border: solid 3px black;
 
 }
+
+#soundcloud-div {
+
+    /*padding-bottom: 10px;*/
+}
+
+#category-and-timer{
+    text-align: center;
+    padding: 20px;
+}
+
+#timer-card{
+    float: right;
+}
+
+#timer{
+    font-family: 'Press Start 2P';
+    font-size: 3rem;
+}
+
+#question-and-chat{
+    padding-bottom: 20px;
+}
+
+#question-grouping{
+    padding-top: 15px;
+}
+
+#submit-choice{
+    margin-bottom: 10px;
+}
+
+#high-score-card{
+    padding-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.card-header{
+    background-color: lightgrey;
+    font-size: 1.5rem;
+}
+
+#post{
+    background-color: black;
+    color: white;
+}
+
+/*font-family: 'Press Start 2P', cursive;
+font-family: 'Audiowide', cursive;
+font-family: 'Special Elite', cursive;*/

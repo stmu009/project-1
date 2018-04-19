@@ -12,20 +12,22 @@
 <!-- Custom styles -->
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="stylesheet" href="assets/css/chat.css">
+<link href="https://fonts.googleapis.com/css?family=Audiowide|Press+Start+2P|Special+Elite" rel="stylesheet">
 <script src='https://cdn.firebase.com/js/client/2.4.0/firebase.js'></script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
 
 
 <body>
 	<div class="jumbotron">
-		<h1>Ultimate Trivia-a-a-a-a(that's an echo)</h1>
-		<h2>I mean it's just trivia, but we call it ultimate</h2>
+		<h1>High Score Trivia</h1>
+		<h2>The Longer You Play, The Higher Your Score</h2>
 		
 	</div>
 	<div class="container">
+		<div id="soundcloud-div" class="row">
 			<div id="soundcloud-section" class="row card card-default">
-			
-				</div>
+			</div>
+		</div>
 		
 
 		<!-- Modal -->
@@ -39,7 +41,7 @@
 							<!-- show instructions -->
 						<h4>Rules:</h4>
 						You have
-						<span id="question-timer">30</span> seconds to answer each question.
+						<span id="question-timer">20</span> seconds to answer each question.
 						<br> The category will change after
 						<span id="quesitons-in-category">5</span> questions.
 						<br> Your score is a running count of how many questions you have answered correcly in a session.
@@ -56,25 +58,30 @@
 				</div>
 			</div>
 		</div>
-		<div class="card">
-			<div class="card-body">
-				<h4 id="category-name" class="card-title">Category</h4>
+		<div class="row" id="category-and-timer">
+			<div class="card card-default col-md-5" id="category-card">
+				<div class="card-header">Current Category</div>
+					<div class="card-body">
+						<h4 id="category-name" class="card-title">Category</h4>
+					</div>
+			</div>
+			<div class="col-md-2"></div>
+
+			<div class="card card-default col-md-5" id="timer-card">
+				<div class="card-header">Time Remaining:</div>
+					<div class="card-body" id="timer">00:00</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-md-8">
 
-				<div class="row card card-default">
-					<div class="card-body" id="timer">Time Remaining: 00:00</div>
-				</div>
-
+		<div class="row" id="question-and-chat">
+			<div class="col-md-7">
 				<div class="row card card-default" id="questionDiv">
 					<div class="card-header" id="">
 						<div id="question-div">question goes here</div>
 					</div>
 					<div class="card-body" id="answerChoiceDiv">
 						<!--  -->
-						<div class="form-check btn-group-vertical">
+						<div class="form-check btn-group-vertical" id="question-grouping">
 							<label class="form-check-label">
 								<input type="radio" class="form-check-input" name="choice" id="check-input0" value="checkedValue" checked>
 								<span class="" id="choice0"></span>
@@ -126,16 +133,17 @@
 				</div>
 			</div>
 
+			<div class="col-md-1"></div>
 			<div class="col-md-4">
 
 				<aside class="row card card-default" id="chatbox">
-					<div class="card-header" id="chat-header">
+					<div class="card-header" id="chat-header">Chat with Friends!
 						<!-- <input type="text" id="username" class="validate" placeholder="type your name here"> -->
 					</div>
 					<div id="results" class="list-group">
 					</div>
 					<form action="">
-						<div class="input-field col s12">
+						<div class="input-field col-md-12">
 							<textarea id="text" class="" placeholder="type in a message and then click the submit button"></textarea>
 						</div>
 						<button id="post" class="btn" type="submit" name="action">Submit
@@ -149,14 +157,15 @@
 
 		</div>
 
-		<div class="row card card-default">
+		<div class="row" id="high-score-card">
+		<div class="card card-default">
 			<div class="card-header">Current Game Scores</div>
-			<div id="mq-section" class="card-body">
-			</div>
-
+			<div id="mq-section" class="card-body"></div>
 		</div>
+		</div>
+	</div>
+
 		
-	<div class="container">
 		
 		<!-- Bootstrap Includes for Animations  -->
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
