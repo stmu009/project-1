@@ -100,6 +100,10 @@ div#questionDiv {
     color: white;
 }
 
+#spacing{
+    padding-right: 50px;
+}
+
 /*font-family: 'Press Start 2P', cursive;
 font-family: 'Audiowide', cursive;
 font-family: 'Special Elite', cursive;*/

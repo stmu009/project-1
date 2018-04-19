@@ -246,7 +246,7 @@ var startListeningScores = function () {
             if (userObject.hasOwnProperty(key)) {
                 const element = userObject[key];
                 var span = $('<span>')
-                span.text(`${element.username}: ${element.score}pts; ____________  `)
+                span.html(`${element.username}: ${element.score}pts; <span id="spacing"><span>  `)
                 $(marquee).append(span);
             }
         }
